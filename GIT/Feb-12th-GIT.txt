@@ -1,0 +1,60 @@
+GIT --> version control tool used to keep track of versions of files and directories..
+
+mkdir git_practice
+cd git_practice
+
+git init ---> create git repo
+(ls -a and make sure .git repo is present)
+
+-------------------------------------------------------
+git config --global user.name "abc"
+git config --global user.email "abc@gmail.com"
+--------------------------------------------------------------------
+vi file1
+
+(add two lines )
+
+git status 
+(untracked files )
+
+git add file1 --> move files from local repo to staging area or index area 
+
+git status
+git commit -m "added file1" ---> this will move files from index area to git repo.
+
+git status
+(nothing to commit, working tree clean)
+
+git log ---> shows history of repository
+
+git log -2 --> shows you latest two commits 
+
+git log filename ---> shows you all commits on a file
+
+git log -2 filename ---> latest two commits on a file
+
+
+vi file1
+(add extra few lines to it)
+
+git add file1
+git commit -m "modified file1"
+
+git log 
+(u can see two commits)
+
+take previous commit ID 
+
+git checkout Prev-Commit-ID ---> used to switch to previous commit or switch to branch or switch to tag
+
+cat file1
+(check content of a file)
+
+git checkout master  
+(switch to latest commit)
+
+git log 
+
+(u can see all commits)
+
+u can add one more file test and repeat above steps 

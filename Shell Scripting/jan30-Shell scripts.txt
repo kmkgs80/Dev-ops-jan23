@@ -1,0 +1,151 @@
+-----------------------------------------------------------------
+#!/bin/bash
+
+echo "I am ABC and I am from Bangalore"
+
+echo "this is my number 7654321"
+-----------------------------------------------------------------------------
+
+-------------example1.sh---------------------------------------
+#!/bin/bash           
+
+
+echo "Hi this is ABC and I am from Blore"
+
+echo "below is the list of current dirs"
+ls -lrt
+
+----------------------------------------------------------------------
+
+
+how to execute shell script
+
+./example1.sh
+or
+sh example1.sh
+or
+bash example1.sh
+
+what's first line of shell script?
+#!/bin/bash  --> shebang. it invokes bash shell. if i don't write. it uses default shell.
+
+-----------------------------------------------------
+------------------------------------example2.sh---------------------------------------
+#!/bin/bash
+
+var=ABC
+var1=Blore
+var2="xyz 1234"
+
+echo "This is $var and I am from $var1"
+--------------------------------------------------------------------------------------------------
+
+-------------------------------example3.sh-----------------------------------------------
+#!/bin/bash
+
+echo "This is $1 and I am from $2"
+
+------------------------------------------------------------------------
+how do you read arguements in shell script?
+
+we can pass arguements to shell script separated by spaces 
+
+we can read them using $1 $2 $3... inside shell script
+
+$1 ---> 1st arguement 
+$2----> 2nd arguement 
+.
+.
+${10} ---> 10th agruemnt 
+.
+.
+------------------------------------------------------------------------------
+
+$# --> total number of args passed to script
+$* --> All args passed to script
+$? --> used to check status of last executed command, 0 means success and non-zero is failure
+$@ --> all args paased to script but stored in array format
+$! ---> PID of last command went into background
+$$  --> PID of current running process
+$0 --> name of the script itself 
+
+----------------------------------------------------------------------------------
+how do you run script in background?
+
+use & at end of script.
+
+./script1 &
+
+------------------------------------------------------------------
+
+ps -ef | grep "script name"
+
+how do you bring it back to foreground?
+
+fg PID
+
+
+difference between ./script &  and nohup ./scrpt &
+
+./script & ---> script will run in background and stops its execution once you close session or terminal
+
+
+nohup ./scrpt &
+
+nohup (no hang up)--> run script in background and will complete execution even after closing session or terminal 
+=================================================================================================================================
+simple if statement
+
+if [ condition ]
+then
+statment
+fi
+----------------------------------------
+write a script to check given number is 5 or not
+#!/bin/bash
+
+if [ $1 -eq 5 ]
+then
+        echo "$1 is five"
+fi
+--------------------------------------------------------------------------
+numeric comparison
+-eq  --> equals
+-ne --> not equal to
+-gt --> greater than
+-ge --> greater than or equal to
+-lt --> less than 
+-le  --> less than or equal to
+--------------------------------------------------------------
+
+if.... else....
+--------------------------------------------------------------
+if [ condition ]
+then
+statment1
+else
+statement2
+fi
+----------------------------------------
+#!/bin/bash
+
+if [ $1 -eq 5 ]
+then
+        echo "$1 is five"
+else
+        echo "$1 is not five"
+fi
+-----------------------------------------------------------------------------------------
+
+write a script to find biggest of two numbers 
+#!/bin/bash
+
+if [ $1 -gt $2 ];then
+        echo "$1 is big"  # 1st arguemnt
+else
+        echo "$2 is big"
+fi
+------------------------------------------------------------------------------------------------------------
+Assignment: 
+find biggest of 3 numbers 
+------------------------------------------------------------------------------------

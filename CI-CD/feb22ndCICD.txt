@@ -1,0 +1,101 @@
+/var/lib/jenkins/workspace/test-c-project
+To do build, we use build script
+
+-------------------------build.sh-------------------------------------------------------
+
+#!/bin/bash
+
+git pull url
+
+if [ $? -ne 0 ];then
+ 
+  git clone url
+fi
+
+cd /repo/
+
+mvn clean deploy
+if [ $? -eq 0 ];then
+echo "build is success"
+scp file.war user@server:/webapps
+else
+echo "build failed"
+fi
+--------------------------------------------------------------------------
+
+CI ---> integrate changes from dev team continuously without manual intervention. we can give quick feedback to developers 
+
+CD (continuous deployment)---> deploy tested build to PROD environment as early as possible
+
+CD (Continuous delivery) ---> each change from dev team should built and deployed to test env to test chnages 
+
+
+CI/CD tool -->Jenkins
+
+
+Build periodically ---> it will trigger jenkins job based on time whether commit or no commit
+
+poll SCM  --> it will trigger jenkins job only there are commit within specified time period
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+install jenkins 
+
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+sudo yum install epel-release # repository that provides 'daemonize'
+sudo yum install java-11-openjdk-devel
+sudo yum install jenkins  --nobest
+
+
+
+sudo service jenkins start
+
+ps -ef | grep jenkins 
+
+
+go browser
+
+serverIP:8080
+
+click "install suggested plugins"
+--------------------------------------------------------
+
+Assignment : create jenkins and do build for C project and Java project.
+--------------------------------------------------------------------------------------------
+build periodially --> it trigger jenkins job at specified time whether commit or no commit
+
+poll scm --> it triggers jenkins job if there are commits within specified time.
+----------------------------------------------------------------------------------------------------------
+
+What are maven goals?
+----------------------------------------------------------------------------------------------------------
+
+
+plugins
+
+go to manage jenkins ---> manage plugins ---> go to Advanced Tab ---> upload plugin (.hpi file)
+
+you can download jenkins from jenkins update center 
+
+------------------------------------------------------------------------------------------
+
+what kind of plugins you installed
+
+
+1)  parameterised plugin --> used to pass parameters to jenkins job at run time.
+2) gearman plugin --> it's high availability plugin.. if jekins master goes down, other server acts master. so that jenkins is available always.
+
+both servers will be in sync when jenkins master is running. 
+
+Assignment: install below plugins
+
+1) upstream
+2) downstream
+3) quality gate
+4) selenium
+5) artifactory
+6) parameterised
+7)Gearman plugin
+-------------------------------------------------------------------------------------------------------------------------
